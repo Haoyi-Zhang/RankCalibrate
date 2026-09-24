@@ -1,0 +1,80 @@
+{
+  "arithmetic": "exact fractions for every scientific equality",
+  "workers": 1,
+  "unit_tests": 32,
+  "reference_audit": {
+    "entries": 65,
+    "primary_publications": 61,
+    "official_preprints": 4,
+    "full_text_or_claim_sections": 26
+  },
+  "parts": [
+    {
+      "part": "exhaustive",
+      "cpu_seconds": 14.341330895000002,
+      "wall_seconds": 14.342987907999941,
+      "peak_rss_kib": 103468,
+      "details": {
+        "cases": 14,
+        "action_outcome_pairs": 71428,
+        "refinement_evaluations": 205074,
+        "truncated_quadratic_mismatches": 9260,
+        "random_completion_actions": 91,
+        "elimination_max_bits": 15
+      }
+    },
+    {
+      "part": "extended",
+      "cpu_seconds": 6.644567672000001,
+      "wall_seconds": 6.64598512900011,
+      "peak_rss_kib": 116028,
+      "details": {
+        "cases": 6,
+        "max_n": 6,
+        "largest_menu": 4683,
+        "exact_certificate_rows": 299,
+        "definition_samples": 72,
+        "elimination_max_bits": 7
+      }
+    },
+    {
+      "part": "fiber",
+      "cpu_seconds": 0.006736720999999335,
+      "wall_seconds": 0.00681328499990741,
+      "peak_rss_kib": 116028,
+      "details": {
+        "actions": 13,
+        "fiber_rank": 6,
+        "witness_laws": 2,
+        "price_grid": 21,
+        "parameter_grid": 31
+      }
+    },
+    {
+      "part": "parity",
+      "cpu_seconds": 1.3788095939999998,
+      "wall_seconds": 1.3791170110000621,
+      "peak_rss_kib": 116028,
+      "details": {
+        "cases": 7,
+        "largest_n": 9,
+        "largest_outcome_count": 511,
+        "full_menu_cases": 4,
+        "full_menu_max_n": 6
+      }
+    },
+    {
+      "part": "decoding",
+      "cpu_seconds": 3.0302580389999996,
+      "wall_seconds": 3.0319717790000595,
+      "peak_rss_kib": 116028,
+      "details": {
+        "exhaustive_optimum_comparisons": 168,
+        "larger_returned_action_checks": 6,
+        "max_n": 8
+      }
+    }
+  ],
+  "measured_cpu_seconds": 25.401702921000002,
+  "peak_rss_kib": 116028
+}

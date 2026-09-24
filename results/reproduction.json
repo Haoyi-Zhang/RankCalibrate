@@ -1,0 +1,306 @@
+{
+  "procedure": "Copy the complete project and the artifact-only standalone repository into fresh directories. Deliberately place a truncated TeX auxiliary in the complete-project copy, then run every documented unit, complete, bounded-part, and paper-build command. Byte-compare every deterministic result, compare figure data, compare extracted article text, and compare all rendered PDF pages. No network, omitted cache, private controller, or third-party Python package is used for scientific reproduction.",
+  "date": "2026-09-20",
+  "same_author_reproduction": true,
+  "independent_review": false,
+  "commands": [
+    {
+      "command": "python -m unittest discover -s artifact/tests -v",
+      "working_directory": "complete project root",
+      "wall_seconds": 5.68,
+      "child_cpu_seconds": 6.11,
+      "peak_rss_kib": 97832,
+      "exit_code": 0
+    },
+    {
+      "command": "python artifact/verify.py",
+      "working_directory": "complete project root",
+      "wall_seconds": 30.04,
+      "child_cpu_seconds": 30.43,
+      "peak_rss_kib": 116028,
+      "exit_code": 0
+    },
+    {
+      "command": "python artifact/verify.py --part exhaustive --output <temporary-output>",
+      "working_directory": "complete project root",
+      "wall_seconds": 18.52,
+      "child_cpu_seconds": 18.97,
+      "peak_rss_kib": 103472,
+      "exit_code": 0
+    },
+    {
+      "command": "python artifact/verify.py --part extended --output <temporary-output>",
+      "working_directory": "complete project root",
+      "wall_seconds": 10.99,
+      "child_cpu_seconds": 11.43,
+      "peak_rss_kib": 115720,
+      "exit_code": 0
+    },
+    {
+      "command": "python artifact/verify.py --part fiber --output <temporary-output>",
+      "working_directory": "complete project root",
+      "wall_seconds": 4.69,
+      "child_cpu_seconds": 5.15,
+      "peak_rss_kib": 98480,
+      "exit_code": 0
+    },
+    {
+      "command": "python artifact/verify.py --part parity --output <temporary-output>",
+      "working_directory": "complete project root",
+      "wall_seconds": 5.9,
+      "child_cpu_seconds": 6.3,
+      "peak_rss_kib": 98476,
+      "exit_code": 0
+    },
+    {
+      "command": "python artifact/verify.py --part decoding --output <temporary-output>",
+      "working_directory": "complete project root",
+      "wall_seconds": 8.6,
+      "child_cpu_seconds": 9.04,
+      "peak_rss_kib": 99504,
+      "exit_code": 0
+    },
+    {
+      "command": "python paper/build.py",
+      "working_directory": "complete project root",
+      "wall_seconds": 4.94,
+      "child_cpu_seconds": 5.42,
+      "peak_rss_kib": 93092,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "working_directory": "standalone repository root",
+      "wall_seconds": 4.77,
+      "child_cpu_seconds": 5.21,
+      "peak_rss_kib": 97968,
+      "exit_code": 0
+    },
+    {
+      "command": "python verify.py",
+      "working_directory": "standalone repository root",
+      "wall_seconds": 29.63,
+      "child_cpu_seconds": 30.08,
+      "peak_rss_kib": 115860,
+      "exit_code": 0
+    },
+    {
+      "command": "python verify.py --part exhaustive --output <temporary-output>",
+      "working_directory": "standalone repository root",
+      "wall_seconds": 17.88,
+      "child_cpu_seconds": 18.32,
+      "peak_rss_kib": 103468,
+      "exit_code": 0
+    },
+    {
+      "command": "python verify.py --part extended --output <temporary-output>",
+      "working_directory": "standalone repository root",
+      "wall_seconds": 11.28,
+      "child_cpu_seconds": 11.73,
+      "peak_rss_kib": 115748,
+      "exit_code": 0
+    },
+    {
+      "command": "python verify.py --part fiber --output <temporary-output>",
+      "working_directory": "standalone repository root",
+      "wall_seconds": 4.7,
+      "child_cpu_seconds": 5.1,
+      "peak_rss_kib": 98352,
+      "exit_code": 0
+    },
+    {
+      "command": "python verify.py --part parity --output <temporary-output>",
+      "working_directory": "standalone repository root",
+      "wall_seconds": 5.85,
+      "child_cpu_seconds": 6.28,
+      "peak_rss_kib": 98476,
+      "exit_code": 0
+    },
+    {
+      "command": "python verify.py --part decoding --output <temporary-output>",
+      "working_directory": "standalone repository root",
+      "wall_seconds": 7.2,
+      "child_cpu_seconds": 7.57,
+      "peak_rss_kib": 99620,
+      "exit_code": 0
+    }
+  ],
+  "all_exit_codes_zero": true,
+  "complete_project_commands": 8,
+  "standalone_repository_commands": 7,
+  "all_five_bounded_parts_passed_in_both_trees": true,
+  "standalone_repository_required_paper_directory": false,
+  "interrupted_tex_build_recovery_check": true,
+  "interrupted_tex_build_fixture": "A deliberately truncated paper/main.aux was removed automatically before the clean paper build.",
+  "exact_scientific_result_files_equal": 26,
+  "scientific_result_names": [
+    "coefficient_bounds.csv",
+    "decoding.csv",
+    "dimensions.csv",
+    "extended_geometry.csv",
+    "fee_deficiency.csv",
+    "fiber_actions.csv",
+    "fiber_certificate.json",
+    "fiber_curve.csv",
+    "fiber_dominance.json",
+    "intake_and_pilot.json",
+    "matrices/n2_b1.csv",
+    "matrices/n2_b2.csv",
+    "matrices/n3_b1.csv",
+    "matrices/n3_b2.csv",
+    "matrices/n3_b3.csv",
+    "matrices/n4_b1.csv",
+    "matrices/n4_b2.csv",
+    "matrices/n4_b3.csv",
+    "matrices/n4_b4.csv",
+    "matrices/n5_b1.csv",
+    "matrices/n5_b2.csv",
+    "matrices/n5_b3.csv",
+    "matrices/n5_b4.csv",
+    "matrices/n5_b5.csv",
+    "parity.csv",
+    "parity_menus.csv"
+  ],
+  "working_vs_clean_full_mismatches": [],
+  "working_vs_clean_repo_mismatches": [],
+  "clean_full_vs_repo_mismatches": [],
+  "figure_data_equal_to_regenerated_results": true,
+  "paper_pages": 35,
+  "paper_text_equal": true,
+  "all_page_render_equal": true,
+  "standalone_theory_text_equal_to_clean_paper": true,
+  "standalone_theory_all_page_render_equal_to_clean_paper": true,
+  "render_dpi": 160,
+  "changed_render_pages": [],
+  "citation_audit": {
+    "bibliography_entries": 65,
+    "unique_cited_entries": 65,
+    "uncited_entries": 0,
+    "missing_entries": 0,
+    "compiled_bibliography_items": 65,
+    "minimum_required": 55,
+    "build_script_enforced": true
+  },
+  "reference_source_audit": {
+    "entries": 65,
+    "primary_publications": 61,
+    "official_preprints": 4,
+    "full_text_or_claim_sections": 26,
+    "closest_or_imported_sources_rechecked_on_2026_09_20": 14
+  },
+  "proof_dependency_audit": {
+    "entries": 3,
+    "imported_specialized_theorems": 1,
+    "standard_finite_dimensional_facts": 2,
+    "assumptions_and_local_discharge_recorded": true
+  },
+  "paper_source_audit": {
+    "abstract_words": 173,
+    "keywords": 5,
+    "running_title_characters": 45,
+    "overfull_boxes": 0,
+    "undefined_citations_or_references": 0,
+    "bibtex_warnings": 0,
+    "publisher_style_modified": false,
+    "links_hidden_for_print_legibility": true
+  },
+  "pdf_preflight": {
+    "pages": 35,
+    "file_bytes": 416188,
+    "fonts_embedded": true,
+    "raster_images": 0,
+    "encrypted": false,
+    "forms": "none",
+    "javascript": false
+  },
+  "clean_full_run_measurements": {
+    "arithmetic": "exact fractions for every scientific equality",
+    "workers": 1,
+    "unit_tests": 32,
+    "reference_audit": {
+      "entries": 65,
+      "primary_publications": 61,
+      "official_preprints": 4,
+      "full_text_or_claim_sections": 26
+    },
+    "parts": [
+      {
+        "part": "exhaustive",
+        "cpu_seconds": 14.341330895000002,
+        "wall_seconds": 14.342987907999941,
+        "peak_rss_kib": 103468,
+        "details": {
+          "cases": 14,
+          "action_outcome_pairs": 71428,
+          "refinement_evaluations": 205074,
+          "truncated_quadratic_mismatches": 9260,
+          "random_completion_actions": 91,
+          "elimination_max_bits": 15
+        }
+      },
+      {
+        "part": "extended",
+        "cpu_seconds": 6.644567672000001,
+        "wall_seconds": 6.64598512900011,
+        "peak_rss_kib": 116028,
+        "details": {
+          "cases": 6,
+          "max_n": 6,
+          "largest_menu": 4683,
+          "exact_certificate_rows": 299,
+          "definition_samples": 72,
+          "elimination_max_bits": 7
+        }
+      },
+      {
+        "part": "fiber",
+        "cpu_seconds": 0.006736720999999335,
+        "wall_seconds": 0.00681328499990741,
+        "peak_rss_kib": 116028,
+        "details": {
+          "actions": 13,
+          "fiber_rank": 6,
+          "witness_laws": 2,
+          "price_grid": 21,
+          "parameter_grid": 31
+        }
+      },
+      {
+        "part": "parity",
+        "cpu_seconds": 1.3788095939999998,
+        "wall_seconds": 1.3791170110000621,
+        "peak_rss_kib": 116028,
+        "details": {
+          "cases": 7,
+          "largest_n": 9,
+          "largest_outcome_count": 511,
+          "full_menu_cases": 4,
+          "full_menu_max_n": 6
+        }
+      },
+      {
+        "part": "decoding",
+        "cpu_seconds": 3.0302580389999996,
+        "wall_seconds": 3.0319717790000595,
+        "peak_rss_kib": 116028,
+        "details": {
+          "exhaustive_optimum_comparisons": 168,
+          "larger_returned_action_checks": 6,
+          "max_n": 8
+        }
+      }
+    ],
+    "measured_cpu_seconds": 25.401702921000002,
+    "peak_rss_kib": 116028
+  },
+  "total_documented_command_child_cpu_seconds": 177.14,
+  "maximum_observed_command_rss_kib": 116028,
+  "timing_is_not_a_reproducibility_target": true,
+  "limitations": [
+    "These are same-author clean reproductions and artifact-only checks, not independent peer review.",
+    "Finite exact checks validate bounded instances and implementation identities; the general theorems remain mathematical proofs rather than proof-assistant formalizations.",
+    "Wall time and peak memory are observations on this host, not reproducibility targets.",
+    "The bibliography audit verifies authoritative metadata and specified claim sections at recorded depth; it does not independently rederive every cited result.",
+    "The project contains no trained retrieval model, corpus benchmark, human resolver study, or deployment evidence."
+  ]
+}
