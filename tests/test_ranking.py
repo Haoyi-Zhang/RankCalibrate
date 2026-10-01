@@ -57,6 +57,18 @@ class ExactUnits(unittest.TestCase):
         self.assertEqual(len(list(ordered_partitions((0, 1, 2), 3))), 13)
         self.assertEqual(len(list(ordered_partitions((0, 1, 2, 3), 1))), 24)
 
+    def test_dimension_saturation_boundary(self):
+        self.assertEqual(dimension(2, 1), 1)
+        self.assertEqual(dimension(2, 2), 2)
+        self.assertEqual(dimension(3, 2), 6)
+        self.assertNotEqual(dimension(2, 1), (1 << 2) - 2)
+        for n in range(2, 9):
+            for b in range(1, n + 1):
+                self.assertEqual(
+                    dimension(n, b) == (1 << n) - 2,
+                    b >= max(2, n - 1),
+                )
+
     def test_invalid_inputs(self):
         with self.assertRaises(ValueError):
             list(ordered_partitions((0,), 0))

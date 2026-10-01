@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import unittest
+from datetime import date
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -17,7 +18,8 @@ class ProofDependencyAuditTests(unittest.TestCase):
         for row in rows:
             for field, value in row.items():
                 self.assertTrue(value.strip(), f"blank {field} in {row['dependency_id']}")
-            self.assertEqual(row["last_checked"], "2026-09-20")
+            checked = date.fromisoformat(row["last_checked"])
+            self.assertLessEqual(checked, date.today())
 
     def test_imported_lower_bound_matches_reference_ledger(self):
         with (ROOT / "proof_dependency_audit.csv").open(

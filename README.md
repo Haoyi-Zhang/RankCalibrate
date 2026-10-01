@@ -11,7 +11,7 @@ python -m unittest discover -s tests -v
 python verify.py
 ```
 
-The location-independent suite contains **32 tests**. It covers mathematical identities, malformed and inexact-input rejection, relabeling equivariance, monotonicity under block merging, contrast reconstruction, the active-face rank certificate, exact round trips, single-pass report validation, bibliography and proof-dependency ledgers, deterministic-output comparison, and deliberate audit-failure cases. The verifier reruns the tests and regenerates the scientific CSV/JSON outputs under `results/` with one worker. Do not use `python -O`: the runner rejects optimized execution because scientific assertions must remain active. Timing and memory are observations, not reproduction targets.
+The location-independent suite contains **34 tests**. It covers mathematical identities, malformed and inexact-input rejection, relabeling equivariance, monotonicity under block merging, contrast reconstruction, the active-face rank certificate, exact round trips, single-pass report validation, bibliography and proof-dependency ledgers, deterministic-output comparison, and deliberate audit-failure cases. The verifier reruns the tests and regenerates the scientific CSV/JSON outputs under `results/` with one worker. Do not use `python -O`: the runner rejects optimized execution because scientific assertions must remain active. Timing and memory are observations, not reproduction targets.
 
 For bounded or resumable checks:
 
@@ -23,13 +23,15 @@ python verify.py --part parity
 python verify.py --part decoding
 ```
 
-A failed assertion, unit test, bibliography audit, or proof-dependency audit returns a nonzero exit status. Append `--output /path/to/empty-output` to regenerate results without touching the retained `results/` directory. Inputs resolve relative to the source files rather than the shell working directory. The five parts together cover the same scientific computations as `--part all`; resource observations differ across separate processes. To compare a fresh run with the retained deterministic evidence, use:
+A failed assertion, unit test, bibliography audit, or proof-dependency audit returns a nonzero exit status. Append `--output /path/to/empty-output` to regenerate results without touching the retained `results/` directory. The destination must be genuinely empty. Inputs resolve relative to the source files rather than the shell working directory. The five parts together cover the same scientific computations as `--part all`; resource observations differ across separate processes. A complete clean comparison is:
 
 ```sh
-python compare_results.py results /path/to/empty-output
+fresh=$(mktemp -d)
+python verify.py --output "$fresh"
+python compare_results.py results "$fresh"
 ```
 
-The comparator checks all claim-relevant files byte-for-byte and deliberately ignores host-dependent resource and reproduction records.
+The comparator uses an explicit manifest of **25 regenerable scientific files** and checks each byte-for-byte. It fails on any missing, changed, or unexpected scientific file. `results/intake_and_pilot.json` is a retained observation of the original host and early pilot; the verifier does not regenerate or copy it, and the comparator excludes it. Run-specific `resources*.json` files and `reproduction.json` are likewise metadata rather than scientific equality targets.
 
 ## What is proved and what is checked
 
@@ -51,11 +53,11 @@ The current audit covers **65 cited scholarly works**: 61 primary publications a
 
 ## File roles
 
-`ranking.py` contains validated exact definitions, ordered-partition enumeration, harmonic/Newton coefficients, rational rank, explicit contrast features, reference prices, the subset decoder, and normalized-moment inversion. Public scientific inputs reject binary floating-point and Boolean values rather than silently converting them; use integers, `Fraction`, exact decimal/rational strings, or another exact value accepted by `Fraction`. `verify.py` orchestrates the five finite campaigns, and `compare_results.py` detects deterministic evidence drift. `tests/` contains the 32 tests. `fixtures/fiber.json` is an exact analytic fixture, not sampled or fitted data.
+`ranking.py` contains validated exact definitions, ordered-partition enumeration, harmonic/Newton coefficients, rational rank, explicit contrast features, reference prices, the subset decoder, and normalized-moment inversion. Public scientific inputs reject binary floating-point and Boolean values rather than silently converting them; use integers, `Fraction`, exact decimal/rational strings, or another exact value accepted by `Fraction`. `verify.py` orchestrates the five finite campaigns, and `compare_results.py` detects deterministic evidence drift. `tests/` contains the 34 tests. `fixtures/fiber.json` is an exact analytic fixture, not sampled or fitted data.
 
 `claim_evidence_ledger.csv` maps every material manuscript claim to theorem/lemma locations, proof or checker, exact output, maturity, scope, and latest recheck. `external_resources.csv` records the 65 scholarly sources and two official venue/style resources, including attribution and integration boundaries. `proof_dependency_audit.csv` prevents an imported theorem from being mistaken for a locally proved result. No external implementation or dataset is imported.
 
-`results/matrices/` stores definition-based utility tables for the 14 small cases. `dimensions.csv`, `extended_geometry.csv`, and `coefficient_bounds.csv` retain dimension and coefficient evidence. `fiber_actions.csv`, `fiber_dominance.json`, `fiber_certificate.json`, `fiber_curve.csv`, and `fee_deficiency.csv` retain the exact three-item analysis. `parity.csv` and `parity_menus.csv` separate moment checks from full-menu checks. `decoding.csv` labels exhaustive optimum comparisons separately from returned-action checks. `resources.json` records one run; `reproduction.json` records clean-copy reproduction and its limits.
+`results/matrices/` stores definition-based utility tables for the 14 small cases. `dimensions.csv`, `extended_geometry.csv`, and `coefficient_bounds.csv` retain dimension and coefficient evidence. `fiber_actions.csv`, `fiber_dominance.json`, `fiber_certificate.json`, `fiber_curve.csv`, and `fee_deficiency.csv` retain the exact three-item analysis. `parity.csv` and `parity_menus.csv` separate moment checks from full-menu checks. `decoding.csv` labels exhaustive optimum comparisons separately from returned-action checks. These are the 25 files in the regenerable scientific manifest. `intake_and_pilot.json` preserves a one-time resource/pilot observation and its accounting boundary; it is not a regeneration target. `resources*.json` records particular runs, while `reproduction.json` records clean-copy reproduction and its limits.
 
 ## Conventions and boundaries
 

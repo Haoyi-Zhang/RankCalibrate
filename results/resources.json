@@ -1,7 +1,7 @@
 {
   "arithmetic": "exact fractions for every scientific equality",
   "workers": 1,
-  "unit_tests": 32,
+  "unit_tests": 34,
   "reference_audit": {
     "entries": 65,
     "primary_publications": 61,
@@ -11,9 +11,9 @@
   "parts": [
     {
       "part": "exhaustive",
-      "cpu_seconds": 14.341330895000002,
-      "wall_seconds": 14.342987907999941,
-      "peak_rss_kib": 103468,
+      "cpu_seconds": 13.431252960999998,
+      "wall_seconds": 13.438402467999992,
+      "peak_rss_kib": 103728,
       "details": {
         "cases": 14,
         "action_outcome_pairs": 71428,
@@ -25,9 +25,9 @@
     },
     {
       "part": "extended",
-      "cpu_seconds": 6.644567672000001,
-      "wall_seconds": 6.64598512900011,
-      "peak_rss_kib": 116028,
+      "cpu_seconds": 6.177768665000002,
+      "wall_seconds": 6.18005757200001,
+      "peak_rss_kib": 116304,
       "details": {
         "cases": 6,
         "max_n": 6,
@@ -39,9 +39,9 @@
     },
     {
       "part": "fiber",
-      "cpu_seconds": 0.006736720999999335,
-      "wall_seconds": 0.00681328499990741,
-      "peak_rss_kib": 116028,
+      "cpu_seconds": 0.004960502999999505,
+      "wall_seconds": 0.00496202900001208,
+      "peak_rss_kib": 116304,
       "details": {
         "actions": 13,
         "fiber_rank": 6,
@@ -52,9 +52,9 @@
     },
     {
       "part": "parity",
-      "cpu_seconds": 1.3788095939999998,
-      "wall_seconds": 1.3791170110000621,
-      "peak_rss_kib": 116028,
+      "cpu_seconds": 1.228518932,
+      "wall_seconds": 1.22889939800001,
+      "peak_rss_kib": 116304,
       "details": {
         "cases": 7,
         "largest_n": 9,
@@ -65,9 +65,9 @@
     },
     {
       "part": "decoding",
-      "cpu_seconds": 3.0302580389999996,
-      "wall_seconds": 3.0319717790000595,
-      "peak_rss_kib": 116028,
+      "cpu_seconds": 2.5561818539999983,
+      "wall_seconds": 2.5573078840000107,
+      "peak_rss_kib": 116304,
       "details": {
         "exhaustive_optimum_comparisons": 168,
         "larger_returned_action_checks": 6,
@@ -75,6 +75,6 @@
       }
     }
   ],
-  "measured_cpu_seconds": 25.401702921000002,
-  "peak_rss_kib": 116028
+  "measured_cpu_seconds": 23.398682915,
+  "peak_rss_kib": 116304
 }
